@@ -1,0 +1,185 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * SentinelCrypt design system.
+ * Enterprise security console: deep navy surfaces, restrained cyan accents,
+ * semantic status tokens for secure / warning / critical / verified states.
+ * All colours are oklch tokens — never hardcode colours in components.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-surface: var(--surface);
+  --color-surface-foreground: var(--surface-foreground);
+  --color-secure: var(--secure);
+  --color-secure-foreground: var(--secure-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-critical: var(--critical);
+  --color-critical-foreground: var(--critical-foreground);
+  --color-info: var(--info);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+  --shadow-panel: 0 1px 0 0 oklch(1 0 0 / 6%) inset, 0 18px 40px -24px oklch(0 0 0 / 70%);
+  --shadow-glow: 0 0 0 1px oklch(0.72 0.13 210 / 25%), 0 12px 32px -18px oklch(0.72 0.13 210 / 45%);
+}
+
+:root {
+  --radius: 0.5rem;
+  --background: oklch(0.17 0.026 255);
+  --foreground: oklch(0.96 0.006 250);
+  --surface: oklch(0.22 0.028 255);
+  --surface-foreground: oklch(0.96 0.006 250);
+  --card: oklch(0.21 0.027 255);
+  --card-foreground: oklch(0.96 0.006 250);
+  --popover: oklch(0.21 0.027 255);
+  --popover-foreground: oklch(0.96 0.006 250);
+  --primary: oklch(0.72 0.13 215);
+  --primary-foreground: oklch(0.16 0.03 255);
+  --secondary: oklch(0.27 0.03 255);
+  --secondary-foreground: oklch(0.93 0.008 250);
+  --muted: oklch(0.26 0.028 255);
+  --muted-foreground: oklch(0.7 0.02 250);
+  --accent: oklch(0.3 0.05 225);
+  --accent-foreground: oklch(0.95 0.01 240);
+  --destructive: oklch(0.6 0.2 22);
+  --destructive-foreground: oklch(0.97 0.01 250);
+  --border: oklch(0.31 0.028 255);
+  --input: oklch(0.29 0.028 255);
+  --ring: oklch(0.72 0.13 215);
+  --secure: oklch(0.72 0.16 165);
+  --secure-foreground: oklch(0.16 0.03 255);
+  --warning: oklch(0.79 0.15 80);
+  --warning-foreground: oklch(0.18 0.03 255);
+  --critical: oklch(0.62 0.21 22);
+  --critical-foreground: oklch(0.97 0.01 250);
+  --info: oklch(0.72 0.13 215);
+  --chart-1: oklch(0.72 0.13 215);
+  --chart-2: oklch(0.72 0.16 165);
+  --chart-3: oklch(0.79 0.15 80);
+  --chart-4: oklch(0.62 0.21 22);
+  --chart-5: oklch(0.65 0.11 275);
+  --sidebar: oklch(0.19 0.027 255);
+  --sidebar-foreground: oklch(0.93 0.008 250);
+  --sidebar-border: oklch(0.29 0.028 255);
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(60rem 40rem at 85% -10%, oklch(0.72 0.13 215 / 8%), transparent),
+      radial-gradient(50rem 30rem at 0% 0%, oklch(0.72 0.16 165 / 5%), transparent);
+    background-attachment: fixed;
+  }
+
+  h1,
+  h2,
+  h3 {
+    letter-spacing: -0.015em;
+  }
+}
+
+@utility panel {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-panel);
+}
+
+@utility mono {
+  font-family: var(--font-mono);
+  font-variant-ligatures: none;
+}
+
+/* Leaflet Security Operations Center Custom Styling */
+.custom-soc-popup .leaflet-popup-content-wrapper {
+  background: #0f172a !important;
+  color: #f8fafc !important;
+  border: 1px solid #334155 !important;
+  border-radius: 0.5rem !important;
+  box-shadow:
+    0 10px 25px -5px rgba(0, 0, 0, 0.7),
+    0 0 15px -3px rgba(6, 182, 212, 0.25) !important;
+  padding: 0 !important;
+}
+
+.custom-soc-popup .leaflet-popup-tip {
+  background: #0f172a !important;
+  border: 1px solid #334155 !important;
+}
+
+.custom-soc-popup .leaflet-popup-content {
+  margin: 0 !important;
+  line-height: 1.4 !important;
+}
+
+.custom-soc-popup a.leaflet-popup-close-button {
+  color: #94a3b8 !important;
+  padding: 6px !important;
+  top: 4px !important;
+  right: 4px !important;
+}
+
+.custom-soc-popup a.leaflet-popup-close-button:hover {
+  color: #f8fafc !important;
+}
+
+.leaflet-pane {
+  z-index: 100 !important;
+}
+
+.leaflet-top,
+.leaflet-bottom {
+  z-index: 200 !important;
+}

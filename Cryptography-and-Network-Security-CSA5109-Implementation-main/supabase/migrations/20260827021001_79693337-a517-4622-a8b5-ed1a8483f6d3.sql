@@ -1,0 +1,1 @@
+ALTER TABLE public.transfers ADD COLUMN IF NOT EXISTS sender_token_wrapped text;
